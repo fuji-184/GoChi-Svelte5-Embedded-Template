@@ -12,6 +12,7 @@ import (
 
     "github.com/go-chi/chi/v5"
     _ "github.com/mattn/go-sqlite3"
+    "github.com/go-chi/chi/v5/middleware"
 )
 
 //go:embed all:svelte/build
@@ -42,6 +43,9 @@ func main() {
     defer db.Close()
 
     r := chi.NewRouter()
+
+    r.Use(middleware.Compress(5, "text/html", "text/css", "application/javascript", "image/*"))
+
     r.Handle("/", staticServer)
     r.Handle("/_app/*", staticServer)
     r.Handle("/service-worker.js", staticServer)
@@ -56,8 +60,8 @@ func main() {
         staticServer.ServeHTTP(w, r)
     })
 
-    fmt.Println("Running on port: 8000")
-    log.Fatal(http.ListenAndServe(":8000", r))
+    fmt.Println("Running on port: 3000")
+    log.Fatal(http.ListenAndServe(":3000", r))
 }
 
 func handleTes(w http.ResponseWriter, r *http.Request, db *sql.DB) {
