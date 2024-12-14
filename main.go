@@ -15,7 +15,7 @@ import (
     "github.com/go-chi/chi/v5/middleware"
 )
 
-//go:embed all:svelte/build
+//go:embed all:frontend/build
 var svelteStatic embed.FS
 
 type Tes struct {
@@ -24,7 +24,7 @@ type Tes struct {
 }
 
 func main() {
-    s, err := fs.Sub(svelteStatic, "svelte/build")
+    s, err := fs.Sub(svelteStatic, "frontend/build")
     if err != nil {
         panic(err)
     }
