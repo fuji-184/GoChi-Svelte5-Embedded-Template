@@ -5,7 +5,7 @@ tmp_dir = "tmp"
 [build]
   args_bin = []
   bin = "tmp\\main.exe"
-  cmd = "npm --prefix ./frontend run build && go build -o ./tmp/main.exe ."
+  cmd = "npm --prefix ./frontend run build && set CGO_ENABLED=1 && go build -o ./tmp/main.exe ."
   delay = 1000
   exclude_dir = ["assets", "tmp", "vendor", "testdata", "frontend\\node_modules", "frontend\\build", "frontend\\.svelte-kit"]
   exclude_file = []
