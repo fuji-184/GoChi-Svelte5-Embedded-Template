@@ -1,2 +1,3 @@
-<p>Hello</p>
-<a href="/about">About</a>
+<div class="bg-blue-600">
+    hellooooo
+</div>
